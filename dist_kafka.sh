@@ -52,9 +52,6 @@ mv * ../build/usr/lib/kafka
 cd ../build
 
 fpm -t deb \
-#    --deb-user ${app_user} \
-    --after-install postinst \
-    --after-remove postrm \
     -n ${name} \
     -v ${version}${package_version} \
     --description "${description}" \
@@ -65,6 +62,8 @@ fpm -t deb \
     --license "${license}" \
     -m "${USER}@localhost" \
     --prefix=/ \
+    --after-install ${origdir}/postinst \
+    --after-remove ${origdir}/postrm \
     -s dir \
     -- .
 mv kafka*.deb ${origdir}
