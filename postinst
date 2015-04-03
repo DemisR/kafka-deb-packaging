@@ -15,7 +15,7 @@ create_kafka_user_group() {
         groupadd -r kafka
     fi
 
-    # create sensu user
+    # create kafka user
     if ! getent passwd kafka >/dev/null; then
         useradd -r -g kafka -d /opt/kafka \
             -s /bin/false -c "Kafka" kafka
