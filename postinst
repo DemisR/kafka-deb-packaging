@@ -22,6 +22,19 @@ create_kafka_user_group() {
     fi
 }
 
+create_zookeeper_user_group() {
+    # create kafka group
+    if ! getent group zookeeper >/dev/null; then
+        groupadd -r zookeeper
+    fi
+
+    # create kafka user
+    if ! getent passwd zookeeper >/dev/null; then
+        useradd -r -g zookeeper -d /usr/lib/kafka \
+            -s /bin/false -c "Zookeeper service user" zookeeper
+    fi
+}
+
 chown_kafka_dirs() {
     chown kafka:kafka /etc/kafka
     chown kafka:kafka /var/log/kafka
@@ -29,10 +42,18 @@ chown_kafka_dirs() {
     chown -R kafka:kafka /usr/lib/kafka
 }
 
+chown_zookeeper_scripts() {
+    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-server-start.sh
+    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-server-stop.sh
+    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-shell.sh
+}
+
 case "$1" in
     configure)
         create_kafka_user_group
         chown_kafka_dirs
+        create_zookeeper_user_group
+        chown_zookeeper_scripts
         ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
