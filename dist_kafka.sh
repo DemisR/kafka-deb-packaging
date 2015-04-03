@@ -4,7 +4,7 @@
 
 set -e
 set -u
-app_user=app
+app_user=kafka
 name=kafka
 version=0.8.2.1
 scala_version=2.10
