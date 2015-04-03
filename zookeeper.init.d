@@ -27,7 +27,7 @@ DESC="Apache Zookeeper Server"
 NAME=zookeeper
 DAEMON=/usr/lib/kafka/bin/zookeeper-server-start.sh
 PIDFILE=/var/run/zookeeper-server.pid
-USER=app
+USER=zookeeper
 CONFIG=/etc/kafka/zookeeper.properties
 LOG=/var/log/zookeeper-server.log
 

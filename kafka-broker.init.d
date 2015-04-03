@@ -25,7 +25,7 @@ DESC="Apache Kafka Broker"
 NAME=kafka
 DAEMON=/usr/lib/kafka/bin/kafka-server-start.sh
 PIDFILE=/var/run/kafka-server.pid
-USER=app
+USER=kafka
 CONFIG=/etc/kafka/server.properties
 LOG=/var/log/kafka/kafka-server.log
 

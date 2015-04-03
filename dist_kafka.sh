@@ -34,7 +34,7 @@ mkdir -p build/etc/init
 mkdir -p build/etc/init.d
 mkdir -p build/etc/kafka
 mkdir -p build/var/log/kafka
-#mkdir -p build/var/run/kafka
+mkdir -p build/var/run/kafka
 
 cp ${origdir}/kafka-broker.default build/etc/default/kafka-broker
 cp ${origdir}/kafka-broker.upstart.conf build/etc/init/kafka-broker.conf

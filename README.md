@@ -47,7 +47,7 @@ $ ~/gpg-agent-headless.sh
 $ reprepro -b /var/repositories/ includedeb trusty $@
 $ apt-get install kafka
 ```
-Note: Installs and runs as user 'app'. Easy to change for your needs.
+Note: Installs and runs as user 'kafka'/'zookeeper'. Easy to change for your needs.
 
 ## Post install
 
