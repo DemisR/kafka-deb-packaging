@@ -1,0 +1,47 @@
+#!/bin/sh
+# postinst script for kafka
+# based on script for sensu: https://github.com/sensu/sensu-build/blob/master/pkg_scripts/deb/postinst
+
+
+set -e
+
+# summary of how this script can be called and ordering:
+#  http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
+#  http://www.proulx.com/~bob/debian/hints/DpkgScriptOrder
+
+create_kafka_user_group() {
+    # create kafka group
+    if ! getent group kafka >/dev/null; then
+        groupadd -r kafka
+    fi
+
+    # create sensu user
+    if ! getent passwd kafka >/dev/null; then
+        useradd -r -g kafka -d /opt/kafka \
+            -s /bin/false -c "Kafka" kafka
+    fi
+}
+
+chown_kafka_dirs() {
+    chown kafka:kafka /etc/kafka
+    chown kafka:kafka /var/log/kafka
+    chown -R kafka:kafka /var/run/kafka
+    chown -R kafka:kafka /usr/lib/kafka
+}
+
+case "$1" in
+    configure)
+        create_kafka_user_group
+        chown_kafka_dirs
+        ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

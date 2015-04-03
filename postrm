@@ -1,0 +1,34 @@
+#!/bin/sh
+# postrm script for kafka
+# based on script for sensu: https://github.com/sensu/sensu-build/blob/master/pkg_scripts/deb/postrm
+
+set -e
+
+# summary of how this script can be called and ordering:
+#  http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
+#  http://www.proulx.com/~bob/debian/hints/DpkgScriptOrder
+
+purge_kafka_user_group() {
+    if getent passwd kafka >/dev/null; then
+        userdel -f kafka
+    fi
+    if getent group kafka >/dev/null; then
+        groupdel -f kafka
+    fi
+}
+
+case "$1" in
+    purge)
+        purge_kafka_user_group
+        ;;
+
+    remove|upgrade|abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
