@@ -7,7 +7,7 @@ set -u
 #app_user=kafka
 name=kafka
 version=0.8.2.1
-scala_version=2.10
+scala_version=2.11
 package_version="-10"
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
@@ -15,7 +15,7 @@ arch="all"
 section="misc"
 license="Apache Software License 2.0"
 bin_package="kafka_${scala_version}-${version}.tgz"
-bin_download_url="http://mirror.sdunix.com/apache/kafka/${version}/${bin_package}"
+bin_download_url="http://apache.arvixe.com//kafka/${version}/${bin_package}"
 origdir="$(pwd)"
 
 #_ MAIN _#
