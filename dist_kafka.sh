@@ -43,8 +43,8 @@ cp ${origdir}/kafka-broker.init.d build/etc/init.d/kafka
 cp ${origdir}/zookeeper.init.d build/etc/init.d/zookeeper
 
 # Updated to use the Binary package
-rm -rf kafka_${scala_version}-${version}
-  tar zxf ${origdir}/${bin_package}
+
+tar zxf ${origdir}/${bin_package}
 cd kafka_${scala_version}-${version}
 
 mv config/* ../build/etc/kafka
@@ -68,6 +68,7 @@ fpm -t deb \
     --category ${section} \
     --vendor "" \
     --license "${license}" \
+    --config-files etc/kafka \
     -m "${USER}@localhost" \
     --prefix=/ \
     -d openjdk-7-jre-headless \
