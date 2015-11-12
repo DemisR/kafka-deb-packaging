@@ -4,6 +4,7 @@ kafka-deb-packaging
 Simple debian packaging for Apache Kafka and Zookeeper, great for Ubuntu 14.04LTS
 
 ### Changelog
+* 2015-Nov-18 : Updated for latest Kafka 0.8.2.2 and adapt for Debian
 * 2015-Mar-18 : Updated for latest Kafka 0.8.2.1 and use sbt in system path.
 * 2015-Mar-30 : Final Test, ready for git pull, packaged Zookeeper init.d!
 
@@ -12,7 +13,7 @@ Simple debian packaging for Apache Kafka and Zookeeper, great for Ubuntu 14.04LT
 ```sh
 $ sudo apt-get update
 $ sudo apt-get install ruby-dev build-essential
-$ sudo get install fpm
+$ sudo gem install fpm
 ```
 # Options
 
@@ -88,5 +89,3 @@ Created topic "installtest".
 ## Tested Platforms
 
 * Ubuntu 14.04LTS, Amazon EC2
-
-

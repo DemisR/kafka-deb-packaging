@@ -1,4 +1,5 @@
 #!/bin/bash
+# 2015-Nov-12 Updated to latest Kafka stable: 0.8.2.2
 # 2015-Mar-18 Updated to latest Kafka stable: 0.8.2.1
 # 2015-Mar-20 Added the init.d script and changed to use binary download of scala 2.10, Kafka 0.8.2.1
 
@@ -65,6 +66,7 @@ fpm -t deb \
     --license "${license}" \
     -m "${USER}@localhost" \
     --prefix=/ \
+    -d openjdk-7-jre-headless \
     --after-install ${origdir}/postinst \
     --after-remove ${origdir}/postrm \
     -s dir \
