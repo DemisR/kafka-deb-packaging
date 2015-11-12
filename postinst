@@ -30,7 +30,7 @@ create_zookeeper_user_group() {
 
     # create kafka user
     if ! getent passwd zookeeper >/dev/null; then
-        useradd -r -g zookeeper -d /usr/lib/kafka \
+        useradd -r -g zookeeper -d /usr/local/kafka \
             -s /bin/false -c "Zookeeper service user" zookeeper
     fi
 }
