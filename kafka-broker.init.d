@@ -38,6 +38,8 @@ LOG=/var/log/kafka/kafka-server.log
 # and status_of_proc is working.
 . /lib/lsb/init-functions
 
+[ -r /etc/default/rcS ] && . /etc/default/rcS
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 #
 # Function that starts the daemon/service

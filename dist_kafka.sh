@@ -6,8 +6,8 @@ set -e
 set -u
 #app_user=kafka
 name=kafka
-version=0.8.2.1
-scala_version=2.11
+version=0.8.2.2
+scala_version=2.10
 package_version="-10"
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
@@ -28,7 +28,6 @@ rm -rf kafka
 mkdir -p kafka
 cd kafka
 mkdir -p build/usr/lib/kafka
-mkdir -p build/usr/lib/kafka/logs
 mkdir -p build/etc/default
 mkdir -p build/etc/init
 mkdir -p build/etc/init.d
@@ -43,13 +42,17 @@ cp ${origdir}/zookeeper.init.d build/etc/init.d/zookeeper
 
 # Updated to use the Binary package
 rm -rf kafka_${scala_version}-${version}
-tar zxf ${origdir}/${bin_package}
+  tar zxf ${origdir}/${bin_package}
 cd kafka_${scala_version}-${version}
-# mv config/log4j.properties config/server.properties ../build/etc/kafka
-cp config/server.properties ../build/etc/kafka
-cp config/zookeeper.properties ../build/etc/kafka/zookeeper.properties
+
+mv config/* ../build/etc/kafka
+cp ${origdir}/config-files/zookeeper.properties ../build/etc/kafka/zookeeper.properties
+cp ${origdir}/config-files/server.properties ../build/etc/kafka/server.properties
 mv * ../build/usr/lib/kafka
 cd ../build
+pushd usr/lib/kafka
+patch -p1 < ${origdir}/paths.patch
+popd
 
 fpm -t deb \
     -n ${name} \
