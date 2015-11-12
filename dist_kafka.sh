@@ -48,8 +48,11 @@ rm -rf kafka_${scala_version}-${version}
 cd kafka_${scala_version}-${version}
 
 mv config/* ../build/etc/kafka
-cp ${origdir}/config-files/zookeeper.properties ../build/etc/kafka/zookeeper.properties
-cp ${origdir}/config-files/server.properties ../build/etc/kafka/server.properties
+
+rm -rf bin/windows
+cp ${origdir}/config-files/zookeeper.properties ../build/etc/kafka
+cp ${origdir}/config-files/server.properties ../build/etc/kafka
+cp ${origdir}/config-files/log4j.properties ../build/etc/kafka
 mv * ../build/usr/local/kafka
 cd ../build
 pushd usr/local/kafka
