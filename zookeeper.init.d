@@ -25,7 +25,7 @@
 PATH=$PATH
 DESC="Apache Zookeeper Server"
 NAME=zookeeper
-DAEMON=/usr/lib/kafka/bin/zookeeper-server-start.sh
+DAEMON=/usr/local/kafka/bin/zookeeper-server-start.sh
 PIDFILE=/var/run/zookeeper-server.pid
 USER=zookeeper
 CONFIG=/etc/kafka/zookeeper.properties

@@ -23,7 +23,7 @@
 PATH=$PATH
 DESC="Apache Kafka Broker"
 NAME=kafka
-DAEMON=/usr/lib/kafka/bin/kafka-server-start.sh
+DAEMON=/usr/local/kafka/bin/kafka-server-start.sh
 PIDFILE=/var/run/kafka-server.pid
 USER=kafka
 CONFIG=/etc/kafka/server.properties

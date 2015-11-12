@@ -28,13 +28,14 @@ mkdir -p tmp && pushd tmp
 rm -rf kafka
 mkdir -p kafka
 cd kafka
-mkdir -p build/usr/lib/kafka
+mkdir -p build/usr/loca/kafka
+mkdir -p build/usr/local/kafka/kafka-logs
 mkdir -p build/etc/default
 mkdir -p build/etc/init
 mkdir -p build/etc/init.d
 mkdir -p build/etc/kafka
 mkdir -p build/var/log/kafka
-mkdir -p build/var/run/kafka
+
 
 cp ${origdir}/kafka-broker.default build/etc/default/kafka-broker
 cp ${origdir}/kafka-broker.upstart.conf build/etc/init/kafka-broker.conf
@@ -49,9 +50,9 @@ cd kafka_${scala_version}-${version}
 mv config/* ../build/etc/kafka
 cp ${origdir}/config-files/zookeeper.properties ../build/etc/kafka/zookeeper.properties
 cp ${origdir}/config-files/server.properties ../build/etc/kafka/server.properties
-mv * ../build/usr/lib/kafka
+mv * ../build/usr/local/kafka
 cd ../build
-pushd usr/lib/kafka
+pushd usr/local/kafka
 patch -p1 < ${origdir}/paths.patch
 popd
 

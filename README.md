@@ -81,7 +81,7 @@ $ sudo update-rc.d kafka defaults 25
 ## System Check
 
 ```sh
-$ /usr/lib/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic installtest --partitions 1 --replication-factor 1
+$ /usr/local/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic installtest --partitions 1 --replication-factor 1
 
 Created topic "installtest".
 ```

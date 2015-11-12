@@ -17,7 +17,7 @@ create_kafka_user_group() {
 
     # create kafka user
     if ! getent passwd kafka >/dev/null; then
-        useradd -r -g kafka -d /usr/lib/kafka \
+        useradd -r -g kafka -d /usr/local/kafka \
             -s /bin/false -c "Kafka service user" kafka
     fi
 }
@@ -39,13 +39,13 @@ chown_kafka_dirs() {
     chown kafka:kafka /etc/kafka
     chown kafka:kafka /var/log/kafka
     chown -R kafka:kafka /var/run/kafka
-    chown -R kafka:kafka /usr/lib/kafka
+    chown -R kafka:kafka /usr/local/kafka
 }
 
 chown_zookeeper_scripts() {
-    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-server-start.sh
-    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-server-stop.sh
-    chown zookeeper:zookeeper /usr/lib/kafka/bin/zookeeper-shell.sh
+    chown zookeeper:zookeeper /usr/local/kafka/bin/zookeeper-server-start.sh
+    chown zookeeper:zookeeper /usr/local/kafka/bin/zookeeper-server-stop.sh
+    chown zookeeper:zookeeper /usr/local/kafka/bin/zookeeper-shell.sh
 }
 
 case "$1" in
