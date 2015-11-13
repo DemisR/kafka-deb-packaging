@@ -4,25 +4,33 @@
 
 set -e
 
+NAME="kafka"
+GROUP=$NAME
+USER=$NAME
+
+zNAME="zookeeper"
+zGROUP=$NAME
+zUSER=$NAME
+
 # summary of how this script can be called and ordering:
 #  http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
 #  http://www.proulx.com/~bob/debian/hints/DpkgScriptOrder
 
 purge_kafka_user_group() {
-    if getent passwd kafka >/dev/null; then
-        userdel -f kafka
+    if getent passwd $USER  >/dev/null; then
+        deluser --system $USER || true
     fi
-    if getent group kafka >/dev/null; then
-        groupdel -f kafka
+    if getent group $GROUP >/dev/null; then
+        delgroup --system --only-if-empty $GROUP
     fi
 }
 
 purge_zookeeper_user_group() {
-    if getent passwd zookeeper >/dev/null; then
-        userdel -f zookeeper
+    if getent passwd $zUSER >/dev/null; then
+        deluser --system $zUSER || true
     fi
-    if getent group zookeeper >/dev/null; then
-        groupdel -f zookeeper
+    if getent group $zGROUP >/dev/null; then
+        delgroup --system --only-if-empty $zGROUP
     fi
 }
 
