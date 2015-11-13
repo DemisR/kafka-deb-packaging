@@ -37,10 +37,10 @@ mkdir -p build/etc/kafka
 mkdir -p build/var/log/kafka
 
 
-cp ${origdir}/kafka-broker.default build/etc/default/kafka-broker
-cp ${origdir}/kafka-broker.upstart.conf build/etc/init/kafka-broker.conf
-cp ${origdir}/kafka-broker.init.d build/etc/init.d/kafka
-cp ${origdir}/zookeeper.init.d build/etc/init.d/zookeeper
+cp ${origdir}/files/config/default/kafka-broker.default build/etc/default/kafka-broker
+cp ${origdir}/files/config/init/kafka-broker.upstart.conf build/etc/init/kafka-broker.conf
+cp ${origdir}/files/config/init/kafka-broker.init.d build/etc/init.d/kafka
+cp ${origdir}/files/config/init/zookeeper.init.d build/etc/init.d/zookeeper
 
 # Updated to use the Binary package
 
@@ -50,13 +50,13 @@ cd kafka_${scala_version}-${version}
 mv config/* ../build/etc/kafka
 
 rm -rf bin/windows
-cp ${origdir}/config-files/zookeeper.properties ../build/etc/kafka
-cp ${origdir}/config-files/server.properties ../build/etc/kafka
-cp ${origdir}/config-files/log4j.properties ../build/etc/kafka
+cp ${origdir}/files/config/etc/zookeeper.properties ../build/etc/kafka
+cp ${origdir}/files/config/etc/server.properties ../build/etc/kafka
+cp ${origdir}/files/config/etc/log4j.properties ../build/etc/kafka
 mv * ../build/usr/local/kafka
 cd ../build
 pushd usr/local/kafka
-patch -p1 < ${origdir}/paths.patch
+patch -p1 < ${origdir}/files/patch/paths.patch
 popd
 
 fpm -t deb \

@@ -89,3 +89,4 @@ Created topic "installtest".
 ## Tested Platforms
 
 * Ubuntu 14.04LTS, Amazon EC2
+* Debian Wheezy
