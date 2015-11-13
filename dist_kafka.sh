@@ -72,8 +72,8 @@ fpm -t deb \
     -m "${USER}@localhost" \
     --prefix=/ \
     -d openjdk-7-jre-headless \
-    --after-install ${origdir}/postinst \
-    --after-remove ${origdir}/postrm \
+    --after-install ${origdir}/files/build/postinst \
+    --after-remove ${origdir}/files/build/postrm \
     -s dir \
     -- .
 mv kafka*.deb ${origdir}
