@@ -57,7 +57,7 @@ create_zookeeper_user_group() {
 }
 
 chown_kafka_dirs() {
-    chown $USER:$GROUP /etc/kafka
+    chown -R $USER:$GROUP /etc/kafka
     chown $USER:$GROUP /var/log/kafka
     chown -R $USER:$GROUP /usr/local/kafka
 }
