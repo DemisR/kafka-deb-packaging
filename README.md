@@ -1,7 +1,7 @@
 kafka-deb-packaging
 ===================
 
-Simple debian packaging for Apache Kafka and Zookeeper, great for Ubuntu 14.04LTS
+Simple debian packaging for Apache Kafka and Zookeeper
 
 ### Changelog
 * 2015-Nov-18 : Updated for latest Kafka 0.8.2.2 and adapt for Debian
