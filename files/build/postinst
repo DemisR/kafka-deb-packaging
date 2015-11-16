@@ -8,9 +8,9 @@ NAME="kafka"
 GROUP=$NAME
 USER=$NAME
 
-zNAME="zookeeper"
-zGROUP=$NAME
-zUSER=$NAME
+ZNAME="zookeeper"
+ZGROUP=$ZNAME
+ZUSER=$ZNAME
 
 # summary of how this script can be called and ordering:
 #  http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
@@ -37,18 +37,18 @@ create_kafka_user_group() {
 }
 
 create_zookeeper_user_group() {
-    if ! getent group $zGROUP >/dev/null ; then
+    if ! getent group $ZGROUP >/dev/null ; then
         # Adding system group
-        addgroup --system $zGROUP >/dev/null
+        addgroup --system $ZGROUP >/dev/null
     fi
 
     # creating Zookeeper user if he isn't already there
-    if ! getent passwd $zUSER >/dev/null ; then
+    if ! getent passwd $ZUSER >/dev/null ; then
             # Adding system user
             adduser \
               --system \
               --disabled-login \
-              --ingroup $zGROUP \
+              --ingroup $ZGROUP \
               --no-create-home \
               --gecos "Zookeeper service user" \
               --shell /bin/false \
@@ -63,10 +63,10 @@ chown_kafka_dirs() {
 }
 
 chown_zookeeper_scripts() {
-    chown $zUSER:$zGROUP /usr/local/kafka/bin/zookeeper-server-start.sh
-    chown $zUSER:$zGROUP /usr/local/kafka/bin/zookeeper-server-stop.sh
-    chown $zUSER:$zGROUP /usr/local/kafka/bin/zookeeper-shell.sh
-    chown $zUSER:$zGROUP /etc/kafka/zookeeper.properties
+    chown $ZUSER:$ZGROUP /usr/local/kafka/bin/zookeeper-server-start.sh
+    chown $ZUSER:$ZGROUP /usr/local/kafka/bin/zookeeper-server-stop.sh
+    chown $ZUSER:$ZGROUP /usr/local/kafka/bin/zookeeper-shell.sh
+    chown $ZUSER:$ZGROUP /etc/kafka/zookeeper.properties
 }
 
 case "$1" in

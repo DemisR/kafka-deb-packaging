@@ -8,9 +8,9 @@ NAME="kafka"
 GROUP=$NAME
 USER=$NAME
 
-zNAME="zookeeper"
-zGROUP=$NAME
-zUSER=$NAME
+ZNAME="zookeeper"
+ZGROUP=$ZNAME
+ZUSER=$ZNAME
 
 # summary of how this script can be called and ordering:
 #  http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
@@ -26,11 +26,11 @@ purge_kafka_user_group() {
 }
 
 purge_zookeeper_user_group() {
-    if getent passwd $zUSER >/dev/null; then
-        deluser --system $zUSER || true
+    if getent passwd $ZUSER >/dev/null; then
+        deluser --system $ZUSER || true
     fi
-    if getent group $zGROUP >/dev/null; then
-        delgroup --system --only-if-empty $zGROUP
+    if getent group $ZGROUP >/dev/null; then
+        delgroup --system --only-if-empty $ZGROUP
     fi
 }
 
