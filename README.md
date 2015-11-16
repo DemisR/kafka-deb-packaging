@@ -90,3 +90,61 @@ Created topic "installtest".
 
 * Ubuntu 14.04LTS, Amazon EC2
 * Debian Wheezy
+
+
+---
+
+# Kafka tools (Optional)
+
+
+## Install KafkaT (Simplified command-line administration for Kafka brokers.)
+
+
+```shell
+sudo aptitude install ruby ruby-dev build-essential
+
+```
+
+```shell
+sudo gem install kafkat --source https://rubygems.org --no-ri --no-rdoc
+
+```
+
+Create a new configuration file to match your deployment.
+
+
+
+```text
+vim /etc/kafkatcfg
+
+```
+
+This is a configuration file which KafkaT uses to determine the installation and log directories of your Kafka server. It should also point KafkaT to your ZooKeeper instance. Accordingly, add the following lines to it:
+
+
+
+```text
+{
+"kafka_path": "/usr/local/kafka",
+"log_path": "/usr/local/kafka/kafka-logs",
+"zk_path": "localhost:2181"
+}
+```
+
+You are now ready to use KafkaT. For a start, here's how you would use it to view details about all Kafka partitions:
+
+
+
+```text
+~# kafkat partitionsTopic        Partition    Leader        Replicas                        ISRsTutorialTopic    0        0        [0]                            [0]
+
+```
+
+For others commands:
+
+
+
+```text
+~# kafkatkafkat 0.0.10: Simplified command-line administration for Kafka brokersusage: kafkat [command] [options]Here's a list of supported commands:brokers                                                             Print available brokers from Zookeeper.  clean-indexes                                                       Delete untruncated Kafka log indexes from the filesystem.  controller                                                          Print the current controller.  elect-leaders [topic]                                               Begin election of the preferred leaders.  partitions [topic]                                                  Print partitions by topic.  partitions [topic] --under-replicated                               Print partitions by topic (only under-replicated).  partitions [topic] --unavailable                                    Print partitions by topic (only unavailable).  reassign [topic] [--brokers <ids>] [--replicas <n>]                 Begin reassignment of partitions.  resign-rewrite <broker id>                                          Forcibly rewrite leaderships to exclude a broker.  resign-rewrite <broker id> --force                                  Same as above but proceed if there are no available ISRs.  set-replication-factor [topic] [--newrf <n>] [--brokers id[,id]]    Set the replication factor of  shutdown <broker id>                                                Gracefully remove leaderships from a broker (requires JMX).  topics                                                              Print all topics.
+
+```
