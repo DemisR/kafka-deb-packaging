@@ -129,6 +129,10 @@ Network ports:
   - Zookeeper : 2181
   - Kafka : 9092
 
+Users:
+  - Kafka : kafka
+  - Zookeeper : zookeeper
+
 ---
 
 # Kafka tools (Optional)
