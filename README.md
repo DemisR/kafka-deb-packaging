@@ -172,20 +172,25 @@ This is a configuration file which KafkaT uses to determine the installation and
 }
 ```
 
-You are now ready to use KafkaT. For a start, here's how you would use it to view details about all Kafka partitions:
 
+```shell
+~# kafkat
+kafkat 0.0.10: Simplified command-line administration for Kafka brokers
+usage: kafkat [command] [options]
 
+Here's a list of supported commands:
 
-```text
-~# kafkat partitionsTopic        Partition    Leader        Replicas                        ISRsTutorialTopic    0        0        [0]                            [0]
-
-```
-
-For others commands:
-
-
-
-```text
-~# kafkatkafkat 0.0.10: Simplified command-line administration for Kafka brokersusage: kafkat [command] [options]Here's a list of supported commands:brokers                                                             Print available brokers from Zookeeper.  clean-indexes                                                       Delete untruncated Kafka log indexes from the filesystem.  controller                                                          Print the current controller.  elect-leaders [topic]                                               Begin election of the preferred leaders.  partitions [topic]                                                  Print partitions by topic.  partitions [topic] --under-replicated                               Print partitions by topic (only under-replicated).  partitions [topic] --unavailable                                    Print partitions by topic (only unavailable).  reassign [topic] [--brokers <ids>] [--replicas <n>]                 Begin reassignment of partitions.  resign-rewrite <broker id>                                          Forcibly rewrite leaderships to exclude a broker.  resign-rewrite <broker id> --force                                  Same as above but proceed if there are no available ISRs.  set-replication-factor [topic] [--newrf <n>] [--brokers id[,id]]    Set the replication factor of  shutdown <broker id>                                                Gracefully remove leaderships from a broker (requires JMX).  topics                                                              Print all topics.
-
+  brokers                                                             Print available brokers from Zookeeper.
+  clean-indexes                                                       Delete untruncated Kafka log indexes from the filesystem.
+  controller                                                          Print the current controller.
+  elect-leaders [topic]                                               Begin election of the preferred leaders.
+  partitions [topic]                                                  Print partitions by topic.
+  partitions [topic] --under-replicated                               Print partitions by topic (only under-replicated).
+  partitions [topic] --unavailable                                    Print partitions by topic (only unavailable).
+  reassign [topic] [--brokers <ids>] [--replicas <n>]                 Begin reassignment of partitions.
+  resign-rewrite <broker id>                                          Forcibly rewrite leaderships to exclude a broker.
+  resign-rewrite <broker id> --force                                  Same as above but proceed if there are no available ISRs.
+  set-replication-factor [topic] [--newrf <n>] [--brokers id[,id]]    Set the replication factor of
+  shutdown <broker id>                                                Gracefully remove leaderships from a broker (requires JMX).
+  topics                                                              Print all topics.
 ```
