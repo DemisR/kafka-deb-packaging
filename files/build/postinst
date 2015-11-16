@@ -52,7 +52,7 @@ create_zookeeper_user_group() {
               --no-create-home \
               --gecos "Zookeeper service user" \
               --shell /bin/false \
-              $USER  >/dev/null
+              $ZUSER  >/dev/null
     fi
 }
 
