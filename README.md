@@ -91,6 +91,43 @@ Created topic "installtest".
 * Ubuntu 14.04LTS, Amazon EC2
 * Debian Wheezy
 
+---
+
+## Package info
+Debian pkg: `kafka_0.8.2.2-10_all.deb`
+Version :
+  - kafka 8.2.2
+  - scala 2.10
+
+Init scripts:
+  - /etc/init.d/zookeeper
+  - /etc/init.d/kafka
+
+Configuration:
+  - /etc/kafka
+    - consumer.properties
+    - log4j.properties
+    - producer.properties
+    - server.properties
+    - test-log4j.properties
+    - tools-log4j.properties
+    - zookeeper.properties
+  - /etc/default/kafka-broker
+
+Logs:
+  - /var/log/zookeeper-server.log
+  - /var/log/kafka/
+
+Binaries:
+  - /usr/local/kafka/
+
+Data:
+  - /usr/local/kafka/kafka-logs
+  - /usr/local/zookeeper/data
+
+Network ports:
+  - Zookeeper : 2181
+  - Kafka : 9092
 
 ---
 
