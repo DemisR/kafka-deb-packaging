@@ -35,6 +35,7 @@ mkdir -p build/etc/init
 mkdir -p build/etc/init.d
 mkdir -p build/etc/kafka
 mkdir -p build/var/log/kafka
+mkdir -p build/usr/local/zookeeper/data
 
 
 cp ${origdir}/files/config/default/kafka-broker.default build/etc/default/kafka-broker

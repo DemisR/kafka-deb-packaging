@@ -67,6 +67,7 @@ chown_zookeeper_scripts() {
     chown $ZUSER:$ZGROUP /usr/local/kafka/bin/zookeeper-server-stop.sh
     chown $ZUSER:$ZGROUP /usr/local/kafka/bin/zookeeper-shell.sh
     chown $ZUSER:$ZGROUP /etc/kafka/zookeeper.properties
+    chown $ZUSER:$ZGROUP /usr/local/zookeeper/data
 }
 
 case "$1" in
