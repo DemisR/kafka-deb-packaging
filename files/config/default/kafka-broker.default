@@ -1,6 +1,0 @@
-# /etc/default/kafka-broker
-
-export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:/etc/kafka/log4j.properties"
-export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
-
-ENABLE="no"

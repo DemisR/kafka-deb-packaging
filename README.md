@@ -112,7 +112,7 @@ Configuration:
     - test-log4j.properties
     - tools-log4j.properties
     - zookeeper.properties
-  - /etc/default/kafka-broker
+  - /etc/default/kafka
 
 Logs:
   - /var/log/zookeeper-server.log

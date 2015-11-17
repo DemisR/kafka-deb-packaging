@@ -38,9 +38,9 @@ mkdir -p build/var/log/kafka
 mkdir -p build/usr/local/zookeeper/data
 
 
-cp ${origdir}/files/config/default/kafka-broker.default build/etc/default/kafka-broker
-cp ${origdir}/files/config/init/kafka-broker.upstart.conf build/etc/init/kafka-broker.conf
-cp ${origdir}/files/config/init/kafka-broker.init.d build/etc/init.d/kafka
+cp ${origdir}/files/config/default/kafka.default build/etc/default/kafka
+cp ${origdir}/files/config/init/kafka.upstart.conf build/etc/init/kafka.conf
+cp ${origdir}/files/config/init/kafka.init.d build/etc/init.d/kafka
 cp ${origdir}/files/config/init/zookeeper.init.d build/etc/init.d/zookeeper
 
 # Updated to use the Binary package
